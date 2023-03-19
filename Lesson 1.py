@@ -7,11 +7,16 @@ class Student:
     def print_data(self) -> None:
         print(f'Hello! My name is {self.name}. I am {self.age} years old. I`m from {self.country}.')
 
+    def __str__(self):
+        return f'Hello! My name is {self.name}. I am {self.age} years old. I`m from {self.country}.'
+    def __del__(self):
+        print(f'{self.name} is deleted :(')
+
 
 first_student = Student('Nick', 20, 'USA')
 second_student = Student('Kate', 19, 'Ukraine')
 third_student = Student()
 
-first_student.print_data()
-second_student.print_data()
-third_student.print_data()
+print(first_student)
+print(second_student)
+print(third_student)
