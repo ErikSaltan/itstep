@@ -24,12 +24,12 @@ class Student:
         print("Rest time")
         self.gladness += 9
         self.progress -= 0.1
-        self.money -= 5
+        self.money -= 4
 
     def to_work(self):
         print("Time to work!")
         self.gladness -= 5
-        self.money += 8
+        self.money += 6
 
     def hard_work(self):
         print("Not enough money... I'll work a little harder!")
@@ -82,7 +82,7 @@ class Student:
         if -0.49 <= self.progress <= -0.15 and self.money >= 150:
             self.additional_courses()
 
-        if self.gladness >= 145 and self.money <= 30:
+        if self.gladness >= 100 and self.money <= 50:
             self.hard_work()
 
         self.end_of_day()
