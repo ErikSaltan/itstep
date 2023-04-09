@@ -79,7 +79,7 @@ class Student:
         elif live_cube == 4:
             self.to_work()
 
-        if -0.49 <= self.progress <= -0.15 and self.money >= 150:
+        if -0.49 <= self.progress <= -0.15 and self.money >= 45:
             self.additional_courses()
 
         if self.gladness >= 100 and self.money <= 50:
