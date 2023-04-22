@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import lxml
 import requests
 
-obmen = int(input("Введите количество гривен, которые нужно конвертировать, после нажмите Enter: "))
+obmen = int(input("Введите количество гривен, которые нужно конвертировать, после нажмите Enter (ЦЕЛЬНЫЕ ЧИСЛА): "))
 counter = 0
-counter3 = 1
+counter2 = 0
 
 def run(playwright):
     page = playwright.chromium.launch(headless=False).new_page()
@@ -15,40 +15,20 @@ def run(playwright):
 
 
     for dollar in soup.select('.value-full '):
-        global counter3
-        counter2 = counter
-        counter2 += 1
+        global counter
+        global counter2
+
+        if counter == 0:
+            print("1. Количество Евро (ОКРУГЛЕНО ДО СОТЫХ):")
         if counter2 == 1:
-            print("Количество Евро")
-        if counter3 == 2:
-            print("Количество Долларов США")
+            print("2. Количество Долларов США (ОКРУГЛЕНО ДО СОТЫХ):")
         value = dollar.select_one('small').text
         value = value.replace(",", ".")
         value2 = float(value)
         result = (obmen / value2)
         print(round(result, 2))
-        counter3 += 1
-
-'''print("Количество Евро")
-print("Количество Долларов США")'''
+        counter += 1
+        counter2 += 1
 
 with sync_playwright() as playwright:
     run(playwright)
-
-
-
-'''counter = 2
-        if counter == 2:
-            print("Количество Долларов США")
-
-counter = 1
-    if counter == 1:
-        print("Количество Евро")'''
-
-
-
-'''for dollar in soup.select('value-full '):
-    value = dollar.select_one('small').float
-    #value = dollar.select_one('value-full ').get('small')
-    print (value)'''
-#value = dollar.select_one('value-full ').get('small')
